@@ -25,7 +25,7 @@ class transparencyTest : public ofBaseApp{
 
 	private:
 		
-		float angle;
+		float angle, scale;
 		ofLight pointLight;
 		
 };

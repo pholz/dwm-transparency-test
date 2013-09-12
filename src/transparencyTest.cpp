@@ -5,6 +5,7 @@
 void transparencyTest::setup(){
 
 	angle = .0f;
+	scale = 1.0f;
 	ofSetSmoothLighting(true);
     pointLight.setDiffuseColor( ofFloatColor(.85, .85, .55) );
     pointLight.setSpecularColor( ofFloatColor(1.f, 1.f, 1.f));
@@ -54,10 +55,10 @@ void transparencyTest::update(){
 	pointLight.setPosition((ofGetWidth()*.5)+ cos(ofGetElapsedTimef()*.5)*(ofGetWidth()*.3), ofGetHeight()/2, 500);
 
 	int mx = this->mouseX;
-
+	int my = this->mouseY;
 
 	angle = PI * static_cast<float>(mx) / 100.0f;
-
+	scale = static_cast<float>(my) / 100.0f;
 }
 
 //--------------------------------------------------------------
@@ -75,6 +76,7 @@ void transparencyTest::draw(){
 	ofPushMatrix();
 	ofTranslate(ofPoint(ofGetWidth()/2, ofGetHeight()/2, 0.0f));
 	ofRotateY(angle * RAD_TO_DEG);
+	ofScale(scale, scale, scale);
 	ofDrawBox(ofPoint(0), 100.0f);
 	ofPopMatrix();
 
